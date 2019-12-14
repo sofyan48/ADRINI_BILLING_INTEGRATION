@@ -1,0 +1,31 @@
+version: '3'
+services:
+    billing_integration:
+      image: registry.gitlab.com/adrini/adrini_billing_integration
+      restart: always
+      ports:
+	      - "5002:5002"
+      environment:
+        - APP_HOST=0.0.0.0
+        - APP_PORT=5002
+        - FLASK_DEBUG=False
+        - DB_DRIVER=mysql
+        - MYSQL_DB=billing
+        - MYSQL_HOST=192.168.3.10
+        - MYSQL_USER=billing
+        - MYSQL_PASSWORD=adrini@BILLING
+        - APP_REDIS_URL=redis://:pass@session:6379/0
+        - SECRET_KEY=asdsagdasgdasf@asfdasgvdasda@
+        - NINJA_TOKEN=qg5ncpfctdqz3h9hagwogadhcrk6vcsl
+        - NINJA_HOST=192.168.3.11
+        - NINJA_API_VERSION=v1
+      command: ["gunicorn","production:app" ,"-b", "0.0.0.0:5002", "-w", "2"]
+      links:
+	      - "session"
+
+    session:
+      image: redis
+      restart: always
+      command: ["redis-server", "--requirepass", "pass"]
+      ports:
+	      - "6379:6379"

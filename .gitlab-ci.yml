@@ -1,0 +1,37 @@
+variables:
+  IMAGE_VERSION: "0.9.0"
+  DOCKER_COMPOSE_STAGING: "/home/centos/PRODUCTION/docker-compose.yml.staging"
+  DOCKER_COMPOSE_PRODUCTION: "/home/centos/PRODUCTION/docker-compose.yml.prod"
+
+stages:
+  - staging
+  - production
+
+run_staging:
+  stage: staging
+  only:
+    - devel
+  script:
+    # - docker tag registry.gitlab.com/adrini/adrini_iot_sso registry.gitlab.com/adrini/adrini_iot_sso:$IMAGE_VERSION
+    # - docker build -t registry.gitlab.com/adrini/adrini_iot_sso .
+    # - docker-compose -f $DOCKER_COMPOSE_STAGING up -d
+
+build_production:
+  stage: staging
+  only:
+    - master
+  script:
+    # - docker tag registry.gitlab.com/adrini/adrini_iot_sso registry.gitlab.com/adrini/adrini_iot_sso:$IMAGE_VERSION
+    # - docker build -t registry.gitlab.com/adrini/adrini_iot_sso .
+    # - docker push registry.gitlab.com/adrini/adrini_iot_sso
+    # - docker push registry.gitlab.com/adrini/adrini_iot_sso:$IMAGE_VERSION
+  when: manual
+
+# run_production:
+#   stage: production
+#   only:
+#     - master
+#   script:
+#     - docker-compose -f $DOCKER_COMPOSE_PRODUCTION pull
+#     - docker-compose -f $DOCKER_COMPOSE_PRODUCTION up -d
+#   when: manual

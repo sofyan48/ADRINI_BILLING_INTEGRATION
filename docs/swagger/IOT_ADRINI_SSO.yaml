@@ -1,0 +1,170 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: IOT_ADRINI_SSO_LOKAL
+  description: 'TODO: Add Description'
+  contact: {}
+host: sso.adrini.com
+basePath: /
+schemes:
+- https
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /user/add:
+    post:
+      description: ''
+      summary: USER_INSERT
+      operationId: UserAddPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: email
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: first_name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: last_name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: location
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Access-Token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+  /login/add:
+    post:
+      description: ''
+      summary: USER_INSERT_LOGIN
+      operationId: LoginAddPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: username
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: password
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: id_userdata
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+  /login:
+    post:
+      description: ''
+      summary: LOGIN
+      operationId: LoginPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: username
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: password
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+  /user/get:
+    get:
+      description: ''
+      summary: GET_PROFILE_DATA
+      operationId: UserGetGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Access-Token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+  /user/update:
+    post:
+      description: ''
+      summary: UPDATE_USER
+      operationId: UserUpdatePost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: email
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: first_name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: last_name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: location
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Access-Token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+tags: []
